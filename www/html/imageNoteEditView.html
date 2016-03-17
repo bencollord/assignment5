@@ -1,6 +1,6 @@
 <html>
 <!--
-      noteListItem.html
+      imageNoteEditView.html
       @author Kerri Shotts
       @version 1.0.0
 
@@ -19,25 +19,24 @@
       LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
       OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
       OTHER DEALINGS IN THE SOFTWARE.
-
-      
-      Last Modified: 3/11/2016
-      Changes: Added div with classes .ui-label and .note-status to .ui-list-item-contents div
     -->
 
 <body>
-  <div class="ui-list-item-contents" data-uid="%UID%">
-    <div class="ui-glyph note-representation ui-glyph-%REPRESENTATION%"></div>
-    <div class="ui-label note-name">%NAME%</div>
-    <div class="ui-label note-status">%STATUS%</div>
-    <div class="ui-label note-modified-date">%MODIFIED%</div>
-    <div class="ui-label note-info">%INFO%</div>
-    <div class="ui-indicator ui-arrow-direction-right"></div>
-  </div>
-  <div class="ui-list-action-group">
-    <div class="ui-list-action ui-background-destructive-color" data-uid="%UID%">
-      <div>%TRASH%</div>
+  <div class="ui-navigation-bar">
+    <div class="ui-title" contenteditable="true">%NOTE_NAME%</div>
+    <div class="ui-bar-button-group ui-align-left">
+      <div class="ui-bar-button ui-tint-color ui-back-button">%BACK%</div>
     </div>
+    <div class="ui-bar-button-group ui-align-right">
+      <div class="ui-bar-button ui-destructive-color">%DELETE_NOTE%</div>
+    </div>
+  </div>
+  <div class="ui-scroll-container ui-avoid-navigation-bar">
+    <div class="image-container">
+      <div class="ui-glyph ui-background-tint-color ui-glyph-camera outline"></div>
+      <div class="ui-glyph ui-background-tint-color ui-glyph-camera non-outline"></div>
+    </div>
+    <textarea class="ui-text-box" onblur="this.classList.remove('editing');" onfocus="this.classList.add('editing');">%NOTE_CONTENTS%</textarea>
   </div>
 </body>
 

@@ -19,9 +19,16 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * Last Modified: 3/15/2016
+ * Changes: 
+ * - Created class for note-status-icon
+ * - Defined properties to shrink the icon down to size, reduce the opacity, 
+ *   and refine its position.
  */
 
 /* General styles */
+
 
 /* background color */
 
@@ -31,6 +38,7 @@ body {
 body.android {
   background-color: #e7ece6;
 }
+
 /* tint colors for text buttons  */
 
 .ui-tint-color {
@@ -39,6 +47,7 @@ body.android {
 .android .ui-tint-color {
   color: #484848;
 }
+
 /* :active indicates affordances; these slowly fade out to give the user the impression of a touch */
 
 .ui-tint-color:active {
@@ -47,6 +56,7 @@ body.android {
 .android .ui-tint-color:active {
   color: rgba(72, 72, 72, 0.5);
 }
+
 /* backgrount tint colors are used for masked icons */
 
 .ui-background-tint-color {
@@ -61,6 +71,7 @@ body.android {
 .android .ui-background-tint-color:active {
   background-color: rgba(72, 72, 72, 0.5);
 }
+
 /* Change navigation bar appearance */
 
 .ui-navigation-bar {
@@ -74,6 +85,7 @@ body.android {
   border-bottom: 0;
   background-color: #d7dcd6;
 }
+
 /* Change the tool bar appearance as well */
 
 .ui-tool-bar {
@@ -87,11 +99,13 @@ body.android {
   box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
   background-color: #d7dcd6;
 }
+
 /* For android, we need to set the left view's border color in a split view */
 
 .android .ui-container.left-side {
   border-right: 1px solid #484848;
 }
+
 /* Color the back buttons as appropriate */
 
 .ui-back-button::before {
@@ -103,6 +117,7 @@ body.android {
 .android .ui-back-button {
   color: transparent;
 }
+
 /* Background colors for all our views */
 
 .noteListView,
@@ -116,9 +131,11 @@ body.android {
   background-color: #e7ece6;
   color: #484848;
 }
+
 /*
  * NOTE LIST VIEW specific styles
  */
+
 
 /* style the list items */
 
@@ -131,6 +148,7 @@ body.android {
   border-bottom: 1px solid #C0C0C0;
   z-index: 1;
 }
+
 /* Give the list item contents a background color; otherwise we'll see the actions underneath */
 
 .noteListView .ui-list-item-contents {
@@ -139,6 +157,7 @@ body.android {
 .android .noteListView .ui-list-item-contents {
   background-color: #e7ece6;
 }
+
 /* Affordance; gives the list item a color when touched */
 
 .noteListView .ui-list-item:active,
@@ -149,6 +168,7 @@ body.android {
 .android .noteListView .ui-list-item-contents:active {
   background-color: #f7fcf6;
 }
+
 /* note representation is the note's icon */
 
 .noteListView .ui-list-item .note-representation {
@@ -166,6 +186,7 @@ body.android {
 .android .noteListView .ui-list-item .note-representation {
   background-color: #484848;
 }
+
 /* Android's UI has so little color, we've made each representation use a different color. */
 
 .android .noteListView .ui-list-item .note-representation.ui-glyph-page-text-new {
@@ -180,6 +201,26 @@ body.android {
 .android .noteListView .ui-list-item .note-representation.ui-glyph-film {
   background-color: #99CC00;
 }
+
+.noteListView .ui-list-item .note-name,
+.noteListView .ui-list-item .note-status {
+  display: inline-block;
+  text-align: left;
+}
+
+.noteListView .ui-list-item .note-status {
+  color: rgba(87, 52, 32, 0.5);
+}
+
+.noteListView .ui-list-item .note-status-icon {
+  position: relative;
+  top: 5px;
+  left: -5px;
+  
+  width: 1.5em;
+  opacity: .55;
+}
+
 /* position and style the name of the note */
 
 .noteListView .ui-list-item .note-name {
@@ -187,7 +228,7 @@ body.android {
   line-height: 30px;
   font-weight: 200;
   margin-right: 35px;
-  margin-left: 40px;
+  margin-left: 15px;
 }
 .noteListView .ui-list-item:active .note-name {
   color: #FFFFFF;
@@ -195,6 +236,7 @@ body.android {
 .android .noteListView .ui-list-item:active .note-name {
   color: #242424;
 }
+
 /* position and style the modified date */
 
 .noteListView .ui-list-item .note-modified-date {
@@ -203,6 +245,7 @@ body.android {
   font-weight: 300;
   color: rgba(87, 52, 32, 0.5);
   float: left;
+  margin-left: 40px;
 }
 .android .noteListView .ui-list-item .note-modified-date {
   color: #606060;
@@ -215,6 +258,7 @@ body.android {
 .android .noteListView .ui-list-item:active .note-info {
   color: #242424;
 }
+
 /* position and style the note information */
 
 .noteListView .ui-list-item .note-info {
@@ -227,6 +271,7 @@ body.android {
 .android .noteListView .ui-list-item .note-info {
   color: #606060;
 }
+
 /* color the list indicator */
 
 .noteListView .ui-list-item .ui-indicator {
@@ -241,9 +286,11 @@ body.android {
 .android .noteListView .ui-list-item:active .ui-indicator {
   background-color: #242424;
 }
+
 /*
  * NOTE EDIT VIEW styles; these apply to each edit view
  */
+
 
 /* enable selection in the title in navigation bar, since it is editable */
 
@@ -258,6 +305,7 @@ body.android {
   overflow: hidden;
   white-space: nowrap;
 }
+
 /* Each edit view has a text box for the note; style appropriately */
 
 .noteEditView .ui-text-box {
@@ -284,6 +332,7 @@ body.android {
   font-family: "Roboto", "DroidSans", Helvetica, Arial, Sans-Serif;
   color: #484848;
 }
+
 /* A little out of place; but each view has specific needs for its text box.
    For the audio note, it needs to be 100px shorter. */
 
@@ -292,9 +341,11 @@ body.android {
   height: -webkit-calc(100% - 100px);
   height: calc(100% - 100px);
 }
+
 /*
  * AUDIO NOTE VIEW styles
  */
+
 
 /* style the audio container */
 
@@ -308,6 +359,7 @@ body.android {
   background-color: #e7ece6;
   border-bottom: 2px solid #484848;
 }
+
 /* make sure the buttons inside are 44x44px */
 
 .AudioNoteEditView .audio-container div {
@@ -315,6 +367,7 @@ body.android {
   min-width: 44px;
   min-height: 44px;
 }
+
 /* position the audio information (position / duration) */
 
 .AudioNoteEditView .audio-information {

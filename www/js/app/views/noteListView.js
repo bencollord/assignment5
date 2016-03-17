@@ -21,6 +21,14 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * 
+ * Last Modified: 3/15/2016
+ * Changes: 
+ *  - Changed STATUS in renderList method to output an image instead of text and
+ *    conditionally set the image source and alt text.
+ *  - Changed default action in switch statement that generates icons to return
+ *    nothing instead of a default value.
  */
 /*jshint
  asi:true,
@@ -198,6 +206,28 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
               "UID": notes[ note ].uid,
               "TRASH": _y.T( "TRASH" ),
               "NAME": notes[ note ].name,
+              "STATUS": (function () {
+                // Format note status outpupt
+                var noteStatus = notes[ note ].status;
+                var icon = document.createElement("img");
+                icon.className = "note-status-icon";
+                
+                switch(noteStatus) {
+                  case 'followup':
+                    icon.setAttribute("alt", "Follow Up");
+                    icon.setAttribute("src", "assets/push-pin-transparent.png");
+                    break;
+                  case 'archive':
+                    icon.setAttribute("alt", "Archive");
+                    icon.setAttribute("src", "assets/file-cabinet-transparent.png");
+                    break;
+                    // Return empty string if no valid status
+                  default:
+                    return '';
+                }
+                
+                return icon.outerHTML;
+              })(),
               "REPRESENTATION": notes[ note ].representation,
               "MODIFIED": _y.D( notes[ note ].modifiedDate, "D" ),
               "INFO": "" + _y.N( notes[ note ].formattedUnitValue )
