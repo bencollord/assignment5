@@ -21,6 +21,11 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * Last Modified: 3/16/2016
+ * Changes: 
+ * - Updated createNoteEditView and module definition to include 
+ *   ImageNoteEditView and VideoNoteEditView
  */
 /*jshint
          asi:true,
@@ -42,7 +47,7 @@
 /*global define*/
 define( [ "app/views/textNoteEditView", "app/views/audioNoteEditView",
   "app/factories/noteFactory"
-], function( TextNoteEditView, AudioNoteEditView, noteFactory ) {
+], function( TextNoteEditView, AudioNoteEditView, ImageNoteEditView, VideoNoteEditView, noteFactory ) {
   var noteViewFactory = {};
   /**
    * Creates a new note view, given the type (one of the constants in noteFactory).
@@ -53,6 +58,10 @@ define( [ "app/views/textNoteEditView", "app/views/audioNoteEditView",
         return new TextNoteEditView();
       case noteFactory.AUDIONOTE:
         return new AudioNoteEditView();
+      case noteFactory.IMAGENOTE:
+        return new ImageNoteEditView();
+      case noteFactory.VIDEONOTE:
+        return new VideoNoteEditView();
       default:
         throw new Error( "Note View Factory doesn't understand a " + noteType );
     }

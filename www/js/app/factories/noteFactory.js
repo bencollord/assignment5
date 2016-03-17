@@ -21,6 +21,12 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
  * OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * Last Modified: 3/16/2016
+ * Changes: 
+ * - updated create method and module definition to include ImageNote
+ *   and VideoNote
+ * - updated createAssociatedMediaFileName method to include ImageNote and VideoNote
  */
 /*jshint
          asi:true,
@@ -41,7 +47,7 @@
  */
 /*global define*/
 define( [ "yasmf", "app/models/baseNote", "app/models/audioNote" ], function( _y,
-  BaseNote, AudioNote ) {
+  BaseNote, AudioNote, VideoNote, ImageNote ) {
   var noteFactory = {};
   /*
    * Constants
@@ -61,6 +67,10 @@ define( [ "yasmf", "app/models/baseNote", "app/models/audioNote" ], function( _y
         return new BaseNote();
       case noteFactory.AUDIONOTE:
         return new AudioNote();
+      case noteFactory.VIDEONOTE:
+        return new VideoNote();
+      case noteFactory.IMAGENOTE:
+        return new ImageNote();
       default:
         throw new Error( "Note Factory doesn't understand a " + noteType );
     }
@@ -83,6 +93,20 @@ define( [ "yasmf", "app/models/baseNote", "app/models/audioNote" ], function( _y
           "default": "mp3"
         };
         newFileName = "audio";
+        break;
+      case noteFactory.IMAGENOTE:
+        extension = {
+          "default": "jpg"
+        };
+        newFileName = "image";
+        break;
+      case noteFactory.VIDEONOTE:
+        extension = {
+          "ios": "mov",
+          "android": "3gp",
+          "default": "mp4"
+        };
+        newFileName = "movie";
         break;
       default:
         throw new Error( "Note Factory doesn't understand a " + noteType );

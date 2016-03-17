@@ -94,6 +94,19 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
       self._createAndEditNote( noteFactory.AUDIONOTE );
     };
     /**
+     * Create a new video note
+     */
+    self.createNewVideoNote = function() {
+      self._createAndEditNote( noteFactory.VIDEONOTE );
+    };
+    /**
+     * Create a new image note
+     */
+    self.createNewImageNote = function() {
+      self._createAndEditNote( noteFactory.IMAGENOTE );
+    };
+    
+    /**
      * Edit an existing note. Called when a note item is tapped in the list.
      */
     self.editExistingNote = function( e ) {
@@ -170,6 +183,8 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
         ".ui-bar-button.ui-glyph-camera-video" );
       Hammer( self._newTextNoteButton ).on( "tap", self.createNewTextNote );
       Hammer( self._newAudioNoteButton ).on( "tap", self.createNewAudioNote );
+      Hammer( self._newVideoNoteButton ).on( "tap", self.createNewVideoNote );
+      Hammer( self._newImageNoteButton ).on( "tap", self.createNewImageNote );
       _y.UI.backButton.addListenerForNotification( "backButtonPressed", self.quitApp );
     };
     self._hideActions = function( e ) {
