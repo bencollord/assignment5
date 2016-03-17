@@ -45,7 +45,7 @@
          onevar:false 
  */
 /*global define*/
-define( [ "app/views/textNoteEditView", "app/views/audioNoteEditView",
+define( [ "app/views/textNoteEditView", "app/views/audioNoteEditView", "app/views/imageNoteEditView", "app/views/videoNoteEditView",
   "app/factories/noteFactory"
 ], function( TextNoteEditView, AudioNoteEditView, ImageNoteEditView, VideoNoteEditView, noteFactory ) {
   var noteViewFactory = {};

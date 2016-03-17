@@ -46,7 +46,7 @@
          onevar:false 
  */
 /*global define*/
-define( [ "yasmf", "app/models/baseNote", "app/models/audioNote" ], function( _y,
+define( [ "yasmf", "app/models/baseNote", "app/models/audioNote", "app/models/videoNote", "app/models/imageNote" ], function( _y,
   BaseNote, AudioNote, VideoNote, ImageNote ) {
   var noteFactory = {};
   /*
